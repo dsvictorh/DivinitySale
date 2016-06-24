@@ -36,7 +36,7 @@
 				</section>
 				<section class="buy">
 					<div class="games">
-						<figure>
+						<figure data-bind="css: { active: setActive('lowest')}">
 							<img data-bind="attr: { 
 									src: setImage('divine-divinity', 'lowest'), 
 									alt: setActive('lowest') ? 'active' : 'inactive' 
@@ -46,10 +46,12 @@
 									<p><span class="dotted">Divine Divinity</span> (normal price $5.99)</p>
 									<p class="semi-bold">with 6 goodies and 4 language versions</p>
 								</div>
-								<p class="active-check" data-bind="css: { active: setActive('lowest')}">Below average</span></p>
+								<p class="active-check">
+									<span>Below average</span>
+								</p>
 							</figcaption>
 						</figure>
-						<figure>
+						<figure data-bind="css: { active: setActive('average')}">
 							<img data-bind="attr: { 
 									src: setImage('beyond-divinity', 'average'), 
 									alt: setActive('average') ? 'active' : 'inactive' 
@@ -59,10 +61,13 @@
 									<p><span class="dotted">Beyond Divinity</span> (normal price $5.99)</p>
 									<p class="semi-bold">with 6 goodies and 4 language versions</p>
 								</div>
-								<p class="active-check" data-bind="css: { active: setActive('average')}"><span>Above average</span><span class="semi-bold">(from $7.67)</span></p>
+								<p class="active-check">
+									<span>Above average</span> 
+									<span class="semi-bold">(from $7.67)</span>
+								</p>
 							</figcaption>
 						</figure>
-						<figure>
+						<figure data-bind="css: { active: setActive('high')}">
 							<img data-bind="attr: { 
 									src: setImage('divinity-2', 'high'), 
 									alt: setActive('high') ? 'active' : 'inactive' 
@@ -70,9 +75,12 @@
 							<figcaption>
 								<div>
 									<p><span class="dotted">Divine Divinity</span> (normal price $5.99)</p>
-									<p class="semi-bold">with 6 goodies and 4 language versions</p>
+									<p class="semi-bold">with 9 goodies and 7 language versions</p>
 								</div>
-								<p class="active-check" data-bind="css: { active: setActive('high')}"><span>Top supporter</span><span class="semi-bold">(from $18.31)</span></p>
+								<p class="active-check">
+									<span>Top supporter</span> 
+									<span class="semi-bold">(from $18.31)</span>
+								</p>
 							</figcaption>
 						</figure>
 					</div>

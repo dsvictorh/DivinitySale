@@ -71,7 +71,7 @@ h1{
 	.games{
 		background: url('../img/layout/background-games.jpg') center no-repeat;
 		height: 275px;
-		padding: 0 3%;
+		padding: 0 2%;
 		.clear;
 
 		figure{
@@ -79,8 +79,30 @@ h1{
 			height: 100%;
 			float: left;
 			text-align: center;
-			padding-top: 25px;
+			padding-top: 30px;
 			box-sizing: border-box;
+			position: relative;
+
+			&.active{
+				&:not(:first-child):after{
+					content: '';
+				    display: block;
+				    position: absolute;
+				    background: url('../img/icons/plus.png') center no-repeat;
+				    height: 24px;
+				    width: 24px;
+				    top: 25%;
+				    left: -4%;
+				}
+
+				.active-check{
+					color: @color-green;
+
+			    	&:before{
+			    		background-image: url('../img/icons/green-check.png')
+			    	}
+				}
+			}
 
 			> img{
 				margin-bottom: 8px;
@@ -115,14 +137,6 @@ h1{
 					background: url('../img/icons/x.png') 0 center no-repeat;
 					padding-right: 5px;
 				}
-
-			    &.active{
-			    	color: @color-green;
-
-			    	&:before{
-			    		background-image: url('../img/icons/green-check.png')
-			    	}
-			    }
 
 			    span{
 			    	vertical-align: middle;

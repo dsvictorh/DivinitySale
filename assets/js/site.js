@@ -59,7 +59,7 @@ siteViewModel.prototype.init = function(){
  to see the different functionalities working*/
 function getDummyDateHoursMissing()
 {
-	return new Date().addHours(5).addMinutes(59).addSeconds(59);
+	return new Date().addHours(23).addMinutes(59).addSeconds(59);
 }
 
 function getDummyDateDaysMissing()
