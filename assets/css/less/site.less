@@ -71,12 +71,63 @@ h1{
 	.games{
 		background: url('../img/layout/background-games.jpg') center no-repeat;
 		height: 275px;
+		padding: 0 3%;
 		.clear;
 
 		figure{
 			width: 33%;
 			height: 100%;
 			float: left;
+			text-align: center;
+			padding-top: 25px;
+			box-sizing: border-box;
+
+			> img{
+				margin-bottom: 8px;
+			}
+
+			figcaption{
+			    width: 83%;
+    			margin: 0 auto;
+			}
+
+			div{
+				border-top: solid @color-description-price-border 1px;
+				border-bottom: solid @color-description-price-border 1px;
+				padding: 10px 0;
+				margin-bottom: 15px;
+
+				p{
+					line-height: 1.6;
+				}
+			}
+			
+
+			.active-check{
+				color: @color-text-active-check;
+
+				&:before{
+					display: inline-block;
+					vertical-align: middle;
+					content: '';
+					height: 14px;
+					width: 14px;
+					background: url('../img/icons/x.png') 0 center no-repeat;
+					padding-right: 5px;
+				}
+
+			    &.active{
+			    	color: @color-green;
+
+			    	&:before{
+			    		background-image: url('../img/icons/green-check.png')
+			    	}
+			    }
+
+			    span{
+			    	vertical-align: middle;
+			    }
+			}
 		}
 	}
 }

@@ -9,6 +9,26 @@ var siteViewModel = function(){
 	self.timeLeft = ko.observable('');
 	self.payment = ko.observable(highPrice);
 
+	self.setActive = function(price){
+		switch(price)
+		{
+			case 'lowest':
+				return self.payment() >= lowestPrice;
+			case 'average':
+				return self.payment() >= averagePrice;
+			case 'high':
+				return self.payment() >= highPrice;
+			case 'highest':
+				return self.payment() >= highestPrice;
+		}
+		
+		return false;
+	}
+
+	self.setImage = function(img, price){
+		return 'assets/img/games/' + img + (self.setActive(price) ? '-active' : '') + '.png';
+	}
+
 	self.init();
 }
 
