@@ -1,0 +1,136 @@
+//Fonts
+@font-site: 'Open Sans', sans-serif;
+
+//Global Colors
+@color-white: #fff;
+@color-black: #000;
+@color-text-light: #404040;
+@color-text-dark: #333333;
+@color-transparent-button-background: rgba(166,166,166, 0.2);
+
+//Menu
+@color-menu-background-start: #c2c2c2;
+@color-menu-background-end: #a9a9a9;
+@color-menu-border-bottom: #b5b5b5;
+
+
+//Games
+@color-games-background: #e1e1e1;
+
+//Shadows
+.shadow-text{
+	text-shadow: 4px 2px 10px #4a4a4a;
+}
+
+.shadow-box{
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+//Media Queries
+
+
+
+//Functions
+.clear {
+	&:after {
+		clear: both;
+		content: '';
+		display: table;
+	}
+}
+
+.gradient(@colorFrom, @colorTo){
+	background: @colorFrom; 
+    background: -webkit-linear-gradient(@colorFrom, @colorTo); 
+    background: -o-linear-gradient(@colorFrom, @colorTo);
+    background: -moz-linear-gradient(@colorFrom, @colorTo);
+    background: linear-gradient(@colorFrom, @colorTo); 
+}
+
+.user-select(@value) {
+	-webkit-user-select: @value;
+	-moz-user-select: @value;
+	-khtml-user-select: @value;
+	-ms-user-select: @value;
+}
+
+.appearance(@value) {
+	-webkit-appearance: @value;
+	-moz-appearance: @value;
+	appearance: @value;
+}
+
+.transition(@value) {
+	-webkit-transition: @value;
+	-moz-transition: @value;
+	transition: @value;
+}
+
+.transform(@value) {
+	-webkit-transform: @value;
+	-moz-transform: @value;
+	transform: @value;
+}
+
+.filter(@value) {
+	-webkit-filter: @value;
+	-moz-filter: @value;
+	filter: @value;
+}
+
+.animation(@name, @duration: null, @delay: null, @direction: null, @iterationCount: null, @fillMode: null, @timingFunction: null){
+	-moz-animation-name: @name;
+	-webkit-animation-name: @name;
+	animation-name: @name;
+
+	&when not (@duration = null) {
+		-moz-animation-duration: @duration;
+		-webkit-animation-duration: @duration;
+		animation-duration: @duration;
+	}
+
+	&when not (@delay = null) {
+		-moz-animation-delay: @delay;
+		-webkit-animation-delay: @delay;
+		animation-delay: @delay;
+	}
+
+	&when not (@direction = null) {
+		-moz-animation-direction: @direction;
+		-webkit-animation-direction: @direction;
+		animation-direction: @direction;
+	}
+
+	&when not (@iterationCount = null) {
+		-moz-animation-iteration-count: @iterationCount;
+		-webkit-animation-iteration-count: @iterationCount;
+		animation-iteration-count: @iterationCount;
+	}
+
+	&when not (@fillMode = null) {
+		-moz-animation-fill-mode: @fillMode;
+		-webkit-animation-fill-mode: @fillMode;
+		animation-fill-mode: @fillMode;
+	}
+
+	&when not (@timingFunction = null) {
+		-moz-animation-timing-function: @timingFunction;
+		-webkit-animation-timing-function: @timingFunction;
+		animation-timing-function: @timingFunction;
+	}
+}
+
+.keyframes(@name, @steps) {
+	@-moz-keyframes @name {
+		@steps();
+	}
+
+	@-webkit-keyframes @name {
+		@steps();
+	}
+
+	@keyframes @name {
+		@steps();
+	}
+}
+

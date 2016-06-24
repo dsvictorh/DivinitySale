@@ -1,0 +1,56 @@
+<!DOCTYPE  html>
+<html>
+	<head>
+		<title>GOG - Divinity Bundle</title>
+		<link rel="stylesheet" href="assets/css/site.css" />
+		<link rel="stylesheet" href="assets/lib/jquery-ui/jquery-ui.css" />
+	</head>
+	<body>
+		<header class="main-menu">
+			<div class="container">
+				
+			</div>
+		</header>
+		<main>
+			<div class="container">
+				<h1 class="light-text light">Pay what you want for the <span class="normal">Divinity Bundle</span> ($32 value!)</h1>
+				<section class="items-timer light">
+					<ul>
+						<li>
+							<img src="assets/img/icons/heart.png" class="align-middle" alt="heart" />
+							<span>Support Larian Studios</span>
+						</li>
+						<li>
+							<img src="assets/img/icons/mouse.png" alt="mouse" />
+							<span>Play Divinity 2 DC befoore release</span>
+						</li>
+						<li>
+							<img src="assets/img/icons/lock.png" alt="lock" />
+							<span>Get DRM free games with goodies</span>
+						</li>
+					</ul>
+					<div class="timer transparent-button" data-bind="visible: timeLeft">
+						<img src="assets/img/icons/clock.png" alt="clock" />
+						<span>Only <i class="normal" data-bind="text: timeLeft"></i> left</span>
+					</div>
+				</section>
+				<section class="buy">
+					<div class="games">
+						<figure>
+							
+						</figure>
+					</div>
+					
+				</section>
+			</div>
+		</main>
+		<script src="assets/lib/jquery.js"></script>
+		<script src="assets/lib/jquery-ui/jquery-ui.js"></script>
+		<script src="assets/lib/ko.js"></script>
+		<script src="assets/js/utils.js"></script>
+		<script src="assets/js/site.js"></script>
+		<script>
+			ko.applyBindings(new siteViewModel());
+		</script>
+	</body>
+</html>

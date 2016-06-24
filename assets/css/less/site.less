@@ -1,0 +1,83 @@
+@import 'utils.less';
+@import 'core.less';
+
+//Structure
+html{
+	font-size: 10px;
+}
+
+main{
+	padding: 45px 0;
+}
+
+.main-menu{
+	border-bottom: solid 1px @color-menu-border-bottom;
+	height: 46px;
+	.gradient(@color-menu-background-start, @color-menu-background-end);
+	.shadow-box;
+}
+
+.container{
+	width: 950px;
+	margin: 0 auto;
+}
+
+//Layout
+body{
+	background: url('../img/layout/background-header.png') 0 0 repeat-x, url('../img/layout/background.png') 0 0 repeat;
+	color: @color-text-dark;
+	font: 1.2rem @font-site;
+}
+
+h1{
+	text-align: center;
+	font-size: 3.2rem;
+	margin-bottom: 10px;
+}
+
+.items-timer{
+	padding: 0 30px;
+	font-size: 1.4rem;
+	margin-bottom: 35px;
+	.clear;
+
+	ul{
+		float: left;
+		width: 80%;
+
+		li{
+			display: inline-block;
+    		margin-right: 25px;
+    		padding: 10px 0;
+
+    		&:last-child{
+    			margin-right: 0;
+    		}
+		}
+	}
+
+	span, img{
+		vertical-align: middle;
+	}
+
+	.timer{
+		padding: 10px;
+		float: left;
+		margin-left: 2%;
+	}
+}
+
+.buy{
+	.games{
+		background: url('../img/layout/background-games.jpg') center no-repeat;
+		height: 275px;
+		.clear;
+
+		figure{
+			width: 33%;
+			height: 100%;
+			float: left;
+		}
+	}
+}
+
