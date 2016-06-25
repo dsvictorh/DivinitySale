@@ -24,7 +24,6 @@ Date.prototype.addDays = function(d){
 
 
 function getMissingTime(startDate, endDate, getDays){
-
 	var difference = (endDate.getTime() - startDate.getTime());
 	var daysDifference = Math.floor(difference/1000/60/60/24);
     difference -= daysDifference*1000*60*60*24
@@ -47,12 +46,7 @@ function padZero(num, size) {
     return s;
 }
 
-function sizeInput(input){
-	var el = $(input);
-	var size = el.val().length;
-	var fontSize = window.getComputedStyle(input, null).getPropertyValue('font-size');
-	el.css('width',(size + 1) * (parseInt(fontSize) / 2) + 2);
-}
+
 
 $(document).ready(function(){
 	$('body').on('.no-selection', 'click', function(){
@@ -63,10 +57,8 @@ $(document).ready(function(){
 		e.stopImmediatePropagation();
 	});
 
-	$('.auto-size').on('keyup', function(){
+	$('.type-change').on('keyup', function(){
 		var input = $(this);
 		input.trigger('change');
-
-		sizeInput(this);
 	});
 });

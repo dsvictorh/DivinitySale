@@ -88,10 +88,9 @@
 						<div class="controls">
 							<span class="price-label semi-bold left">$<!--ko text: getLowestPrice() --><!-- /ko --></span>
 							<div class="slider">
-								<i class="arrow"></i>
-								<div class="checkout no-click-bubble">
+								<div class="box checkout no-click-bubble">
 									<form>
-										<label class="bold" for="input-price">$</label><input type="text" class="auto-size bold" name="input-price" data-bind="value: paymentInput, event: { change: onPaymentChange}"  />
+										<label class="bold" for="input-price">$</label><input type="text" class="auto-size type-change bold" name="input-price" data-bind="value: paymentInput, event: { change: onPaymentChange}"  />
 										<button class="semi-bold no-selection" data-bind="event: { click: checkout }">Checkout now</button>
 									</form>
 									<small>Click the price to type it in manually</small>
@@ -99,8 +98,8 @@
 								<i class="fill"></i>
 								<!-- ko foreach: checkpoints -->
 									<div class="checkpoint">
-										<p class="no-click-bubble" data-bind="text: '$' + price + ' (' + text + ')', style: { left: $root.setPositionInSlider(price, $element, 2)} "></p>
-										<i data-bind="style: { left: $root.setPositionInSlider(price, $element)}"></i>
+										<p class="no-click-bubble" data-bind="text: '$' + price + ' (' + text + ')', style: { left: $root.slider().setPositionInSlider(price, $element, 2)} "></p>
+										<i data-bind="style: { left: $root.slider().setPositionInSlider(price, $element)}"></i>
 									</div>
 								<!-- /ko -->
 							</div>
@@ -115,6 +114,7 @@
 		<script src="assets/lib/jquery-ui/jquery-ui.js"></script>
 		<script src="assets/lib/ko.js"></script>
 		<script src="assets/js/utils.js"></script>
+		<script src="assets/js/controls/slider.js"></script>
 		<script src="assets/js/site.js"></script>
 		<script>
 			ko.applyBindings(new siteViewModel());

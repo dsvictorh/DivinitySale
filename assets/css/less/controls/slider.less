@@ -1,8 +1,6 @@
 .slider.ui-slider{
 	height: 12px;
     border-radius: 10px;
-    float: left;
-    width: 87.5%;
     margin: 4px 0;
     background: @color-slider-backround;
     border: solid 1px @color-slider-border;
@@ -60,61 +58,9 @@
 	    	.transform(rotate(45deg));
 	    }
 
-    .checkout{
+    .box{
         position: absolute;
     	top: 30px;
 	    white-space: nowrap;
-	
-	    form{
-	    	border: 1px solid @color-slider-checkout-border;
-	    	border-radius: 5px;
-		    .gradient(@color-slider-checkout-background-start, @color-slider-checkout-background-end);
-		    padding: 10px;
-		    position: relative;
-	    }
-
-	    input, label{
-	    	font-size: 2.5rem;
-	    	color: @color-slider-price-text;
-	    }
-
-	    input{
-	    	border: 0;
-	    	background: none;
-	    	outline: 0;
-	    	box-shadow: none;
-	    	.appearance(textfield);
-
-	    	&::-ms-clear {
-			    display: none;
-			}
-
-	    	&::-webkit-inner-spin-button, 
-			&::-webkit-outer-spin-button { 
-			    .appearance(none);
-			    margin: 0; 
-			}
-	    }
-
-	    button{
-	    	.green-gradient;
-	    	border-radius: 5px;
-	    	font-size: 1.3rem;
-	    	padding: 10px;
-	    	vertical-align: top;
-	    	cursor: pointer;
-
-	    	&:hover{
-	    		color: @color-white;
-	    	}
-	    }
-
-	 	small{
-	 		padding: 5px 5px 5px 20px;
-		    display: block;
-		    background: url('../img/icons/info.png') 1% 49% no-repeat;
-		    font-size: 1rem;
-		    color: @color-slider-checkpoint-text;
-	 	}
     }
 }
