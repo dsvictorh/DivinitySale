@@ -9,6 +9,7 @@ var siteViewModel = function(){
 	self.timeLeft = ko.observable('');
 	self.payment = ko.observable(highPrice);
 	self.paymentInput = ko.observable(highPrice);
+	self.customField = ko.observable(null);
 	self.slider = ko.observable(null);
 	self.checkpoints = [
 		{ text: 'Average', price: averagePrice },
@@ -16,12 +17,30 @@ var siteViewModel = function(){
 	];
 
 	self.onPaymentChange = function(){
-		if(self.paymentInput() < lowestPrice){
-			self.payment(lowestPrice);
-		}else{
-			self.payment(self.paymentInput());
+		if(isNaN(self.paymentInput()))
+		{
+			self.paymentInput(lowestPrice);
 		}
+
+		if(self.paymentInput() < lowestPrice)
+		{
+			self.paymentInput(lowestPrice);
+		}
+
+		self.payment(self.paymentInput());
 	};
+
+	self.checkout = function(){
+		if(self.payment() < lowestPrice){
+			alert('Please select a valid price');
+		}
+
+		if(self.timeLeft()){
+			alert('Redirect to checkout functionality here');
+		}
+
+		return false;
+	}
 
 	self.sliderVal = ko.computed(function(){
 		if(self.slider()){
@@ -31,9 +50,12 @@ var siteViewModel = function(){
 				self.slider().slider('value', self.payment());
 			}
 
+			self.paymentInput(self.payment());
 			var handlePosition = self.slider().find('.ui-slider-handle').position().left;
 			var checkout = self.slider().find('.checkout');
+			var arrow = self.slider().find('.arrow');
 			self.slider().find('.fill').width(handlePosition);
+			arrow.css('left', (handlePosition - arrow.outerWidth() / 2) + 3);
 			checkout.css('left', handlePosition - checkout.outerWidth() / 2);
 		}
 	});
@@ -98,20 +120,21 @@ siteViewModel.prototype.init = function(){
 	var endDate = getDummyDateHoursMissing();
 	var self = this;
 	var sliderElement = $('.slider');
-
+	var input = sliderElement.find('.auto-size');
+	input.val(self.getHighPrice());
 
 	sliderElement.slider({
 		min: self.getLowestPrice(),
 		max: self.getHighestPrice(),
 		step: 0.01,
 		slide: function(e, ui){
-			self.payment(ui.value);
-			console.log(ui.value);
+			self.payment(ui.value.toFixed(2));
+			sizeInput(input[0]);
 		}
 	});
 	sliderElement.css('margin-bottom', sliderElement.find('.checkout').outerHeight());
+	sizeInput(input[0]);
 	self.slider(sliderElement);
-
 	
 	if(today < endDate){
 		if(today.addDays(1) > endDate){

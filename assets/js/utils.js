@@ -47,6 +47,13 @@ function padZero(num, size) {
     return s;
 }
 
+function sizeInput(input){
+	var el = $(input);
+	var size = el.val().length;
+	var fontSize = window.getComputedStyle(input, null).getPropertyValue('font-size');
+	el.css('width',(size + 1) * (parseInt(fontSize) / 2) + 2);
+}
+
 $(document).ready(function(){
 	$('body').on('.no-selection', 'click', function(){
 		$(this).blur();
@@ -56,7 +63,10 @@ $(document).ready(function(){
 		e.stopImmediatePropagation();
 	});
 
-	$('.immediate-change').on('keyup', function(){
-		$(this).trigger('change');
+	$('.auto-size').on('keyup', function(){
+		var input = $(this);
+		input.trigger('change');
+
+		sizeInput(this);
 	});
 });

@@ -85,13 +85,16 @@
 						</figure>
 					</div>
 					<div class="price">
-					<p data-bind="text: payment"></p>
 						<div class="controls">
 							<span class="price-label semi-bold left">$<!--ko text: getLowestPrice() --><!-- /ko --></span>
 							<div class="slider">
-								<div class="checkout">
-									<label for="price">$</label>
-									<input type="number" step='0.01' class="immediate-change" data-bind="value: paymentInput, event: { change: onPaymentChange}"  />
+								<i class="arrow"></i>
+								<div class="checkout no-click-bubble">
+									<form>
+										<label class="bold" for="input-price">$</label><input type="text" class="auto-size bold" name="input-price" data-bind="value: paymentInput, event: { change: onPaymentChange}"  />
+										<button class="semi-bold no-selection" data-bind="event: { click: checkout }">Checkout now</button>
+									</form>
+									<small>Click the price to type it in manually</small>
 								</div>
 								<i class="fill"></i>
 								<!-- ko foreach: checkpoints -->
