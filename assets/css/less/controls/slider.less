@@ -1,0 +1,69 @@
+.slider.ui-slider{
+	height: 12px;
+    border-radius: 10px;
+    float: left;
+    width: 87.5%;
+    margin: 4px 0;
+    background: @color-slider-backround;
+    border: solid 1px @color-slider-border;
+
+    .ui-slider-handle{
+    	height: 31px;
+    	width: 15px;
+	    display: block;
+	    background: url('../img/icons/slider-handle.png') 0 0 no-repeat;
+	    cursor: ew-resize;
+	    top: -5px;
+    }
+
+    .fill{
+    	position: absolute;
+    	height: 100%;
+	    left: -1px;
+		top: -1px;
+    	border-radius: 10px;
+    	.green-gradient;
+    }
+
+    .checkpoint{
+		p{
+			position: absolute;
+			top: -25px;
+			font-size: 1rem;
+			color: @color-slider-checkpoint-text;
+		}
+
+		i{
+			height: 4px;
+		    width: 4px;
+		    background: @color-slider-checkpoint-background;
+		    display: block;
+		    border-radius: 50%;
+		    border: 1px solid @color-slider-checkpoint-border;
+	        position: absolute;
+		    top: 3px;
+		}
+    }
+
+    .checkout{
+	    height: 55px;
+	    width: 225px;
+        position: absolute;
+    	top: 30px;
+    	z-index: 1;
+	    .gradient(@color-slider-checkout-background-start, @color-slider-checkout-background-end);
+
+	    &:before{
+	    	height: 15px;
+	    	width: 15px;
+	    	background: @color-slider-checkout-background-start;
+	    	content: '';
+	    	display: block;
+	    	position: absolute;
+	    	top: -7px;
+	    	left: 46.5%;
+	    	z-index: -1;
+	    	.transform(rotate(45deg));
+	    }
+    }
+}

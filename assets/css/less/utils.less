@@ -5,6 +5,9 @@
 @color-white: #fff;
 @color-black: #000;
 @color-green: #739900;
+@color-green-gradient-start: #b5ce18;
+@color-green-gradient-end: #9abc27;
+@color-green-gradient-border: #5f8000;
 @color-text-light: #404040;
 @color-text-dark: #333333;
 @color-transparent-button-background: rgba(166,166,166, 0.2);
@@ -17,8 +20,21 @@
 
 //Games
 @color-games-background: #e1e1e1;
-@color-text-active-check: #4c4c4c;
-@color-description-price-border: #cdcdcd;
+@color-games-text-active-check: #4c4c4c;
+@color-games-description-price-border: #cdcdcd;
+@color-games-price-background: #e6e6e6;
+@color-games-games-border-bottom: #c1c1c1;
+@color-games-price-border-top: #f1f1f1;
+
+//Slider
+@color-slider-checkout-background-start: #c3c3c3;
+@color-slider-checkout-background-end: #cecece;
+@color-slider-backround: #c9c9c9;
+@color-slider-border: #aaaaaa;
+@color-slider-checkpoint-text: #808080;
+@color-slider-checkpoint-background: rgba(0, 0, 0, 0.4);
+@color-slider-checkpoint-border: rgba(0, 0, 0, 0.5);
+
 
 //Shadows
 .shadow-text{
@@ -26,7 +42,11 @@
 }
 
 .shadow-box{
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.shadow-box-below{
+    box-shadow: 0px 5px 6px rgba(0,0,0,0.3);
 }
 
 //Media Queries
@@ -40,6 +60,11 @@
 		content: '';
 		display: table;
 	}
+}
+
+.green-gradient{
+	.gradient(@color-green-gradient-start, @color-green-gradient-end);
+	border: solid 1px @color-green-gradient-border;
 }
 
 .gradient(@colorFrom, @colorTo){

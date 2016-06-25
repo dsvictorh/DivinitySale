@@ -8,6 +8,51 @@ var siteViewModel = function(){
 
 	self.timeLeft = ko.observable('');
 	self.payment = ko.observable(highPrice);
+	self.paymentInput = ko.observable(highPrice);
+	self.slider = ko.observable(null);
+	self.checkpoints = [
+		{ text: 'Average', price: averagePrice },
+		{ text: 'Top 10%', price: highPrice },
+	];
+
+	self.onPaymentChange = function(){
+		if(self.paymentInput() < lowestPrice){
+			self.payment(lowestPrice);
+		}else{
+			self.payment(self.paymentInput());
+		}
+	};
+
+	self.sliderVal = ko.computed(function(){
+		if(self.slider()){
+			if(self.payment() > highestPrice){
+				self.slider().slider('value', highestPrice);
+			}else{
+				self.slider().slider('value', self.payment());
+			}
+
+			var handlePosition = self.slider().find('.ui-slider-handle').position().left;
+			var checkout = self.slider().find('.checkout');
+			self.slider().find('.fill').width(handlePosition);
+			checkout.css('left', handlePosition - checkout.outerWidth() / 2);
+		}
+	});
+
+	self.setPositionInSlider = function(position, element, center){
+		if(position < lowestPrice || position > highestPrice){
+			$(element).remove();
+			console.error('Position value is outside bounds of slider');
+			return;
+		}
+
+
+		var totalValue = highestPrice - lowestPrice;
+		var center = center || 1;
+		var width = $(element).outerWidth() / center;
+		var sliderHandleWidth = self.slider().find('.ui-slider-handle').outerWidth();
+
+		return ((position / (totalValue ) * 100) - ((width + sliderHandleWidth) / self.slider().outerWidth() * 100)) + '%';
+	}
 
 	self.setActive = function(price){
 		switch(price)
@@ -25,6 +70,22 @@ var siteViewModel = function(){
 		return false;
 	}
 
+	self.getLowestPrice = function(){
+		return lowestPrice;
+	}
+
+	self.getAveragePrice = function(){
+		return averagePrice;
+	}
+
+	self.getHighPrice = function(){
+		return highPrice;
+	}
+
+	self.getHighestPrice = function(){
+		return highestPrice;
+	}
+
 	self.setImage = function(img, price){
 		return 'assets/img/games/' + img + (self.setActive(price) ? '-active' : '') + '.png';
 	}
@@ -36,6 +97,21 @@ siteViewModel.prototype.init = function(){
 	var today = new Date();
 	var endDate = getDummyDateHoursMissing();
 	var self = this;
+	var sliderElement = $('.slider');
+
+
+	sliderElement.slider({
+		min: self.getLowestPrice(),
+		max: self.getHighestPrice(),
+		step: 0.01,
+		slide: function(e, ui){
+			self.payment(ui.value);
+			console.log(ui.value);
+		}
+	});
+	sliderElement.css('margin-bottom', sliderElement.find('.checkout').outerHeight());
+	self.slider(sliderElement);
+
 	
 	if(today < endDate){
 		if(today.addDays(1) > endDate){

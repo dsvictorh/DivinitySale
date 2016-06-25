@@ -46,3 +46,17 @@ function padZero(num, size) {
     while (s.length < size) s = "0" + s;
     return s;
 }
+
+$(document).ready(function(){
+	$('body').on('.no-selection', 'click', function(){
+		$(this).blur();
+	});
+
+	$('.no-click-bubble').on('click mousedown', function(e){
+		e.stopImmediatePropagation();
+	});
+
+	$('.immediate-change').on('keyup', function(){
+		$(this).trigger('change');
+	});
+});

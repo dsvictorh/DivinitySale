@@ -67,19 +67,23 @@ h1{
 	}
 }
 
+
 .buy{
+	border-radius: 5px;
+	.shadow-box-below;
+
 	.games{
 		background: url('../img/layout/background-games.jpg') center no-repeat;
-		height: 275px;
-		padding: 0 2%;
+		border-bottom: solid @color-games-games-border-bottom 1px;
+		padding: 30px 2% 25px;
+		border-radius: 5px 5px 0 0;
 		.clear;
-
+ 
 		figure{
 			width: 33%;
 			height: 100%;
 			float: left;
 			text-align: center;
-			padding-top: 30px;
 			box-sizing: border-box;
 			position: relative;
 
@@ -114,8 +118,8 @@ h1{
 			}
 
 			div{
-				border-top: solid @color-description-price-border 1px;
-				border-bottom: solid @color-description-price-border 1px;
+				border-top: solid @color-games-description-price-border 1px;
+				border-bottom: solid @color-games-description-price-border 1px;
 				padding: 10px 0;
 				margin-bottom: 15px;
 
@@ -123,10 +127,9 @@ h1{
 					line-height: 1.6;
 				}
 			}
-			
 
 			.active-check{
-				color: @color-text-active-check;
+				color: @color-games-text-active-check;
 
 				&:before{
 					display: inline-block;
@@ -144,5 +147,31 @@ h1{
 			}
 		}
 	}
+
+	.price{
+		padding: 35px 30px;
+		border-radius: 0 0 5px 5px;
+		background: @color-games-price-background;
+		border-top: solid @color-games-price-border-top 1px;
+
+		.controls{
+			position: relative;
+			.clear;
+		}
+
+		.price-label{
+			float: left;
+			font-size: 1.4rem;
+
+			&.left{
+				margin-right: 1.5%;
+			}
+
+			&.right{
+				margin-left: 1.5%;
+			}
+		}
+	}
 }
 
+@import 'controls/slider.less';

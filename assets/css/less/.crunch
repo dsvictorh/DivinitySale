@@ -11,12 +11,15 @@
 						"strictMath": false,
 						"strictUnits": false,
 						"javascriptEnabled": false,
+						"sourceMap": true,
 						"sourcemap": false
 					}
 				}
 			],
 			"sources": [
+				"controls/slider.less",
 				"core.less",
+				"site.less",
 				"utils.less"
 			]
 		}

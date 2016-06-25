@@ -63,7 +63,7 @@
 								</div>
 								<p class="active-check">
 									<span>Above average</span> 
-									<span class="semi-bold">(from $7.67)</span>
+									<span class="semi-bold">(from $<!--ko text: getAveragePrice() --><!-- /ko -->)</span>
 								</p>
 							</figcaption>
 						</figure>
@@ -79,10 +79,31 @@
 								</div>
 								<p class="active-check">
 									<span>Top supporter</span> 
-									<span class="semi-bold">(from $18.31)</span>
+									<span class="semi-bold">(from $<!--ko text: getHighPrice() --><!-- /ko -->)</span>
 								</p>
 							</figcaption>
 						</figure>
+					</div>
+					<div class="price">
+					<p data-bind="text: payment"></p>
+						<div class="controls">
+							<span class="price-label semi-bold left">$<!--ko text: getLowestPrice() --><!-- /ko --></span>
+							<div class="slider">
+								<div class="checkout">
+									<label for="price">$</label>
+									<input type="number" step='0.01' class="immediate-change" data-bind="value: paymentInput, event: { change: onPaymentChange}"  />
+								</div>
+								<i class="fill"></i>
+								<!-- ko foreach: checkpoints -->
+									<div class="checkpoint">
+										<p class="no-click-bubble" data-bind="text: '$' + price + ' (' + text + ')', style: { left: $root.setPositionInSlider(price, $element, 2)} "></p>
+										<i data-bind="style: { left: $root.setPositionInSlider(price, $element)}"></i>
+									</div>
+								<!-- /ko -->
+							</div>
+							<span class="price-label semi-bold right">$<!--ko text: getHighestPrice() --><!-- /ko --></span>
+						</div>
+						
 					</div>
 				</section>
 			</div>
