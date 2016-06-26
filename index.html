@@ -4,6 +4,7 @@
 		<title>GOG - Divinity Bundle</title>
 		<link rel="stylesheet" href="assets/css/site.css" />
 		<link rel="stylesheet" href="assets/lib/jquery-ui/jquery-ui.css" />
+		<link rel="shortcut icon" href="assets/img/layout/favicon.ico" />
 	</head>
 	<body>
 		<header class="main-menu">
@@ -98,7 +99,7 @@
 								<i class="fill"></i>
 								<!-- ko foreach: checkpoints -->
 									<div class="checkpoint">
-										<p class="no-click-bubble" data-bind="text: '$' + price + ' (' + text + ')', style: { left: $root.slider().setPositionInSlider(price, $element, 2)} "></p>
+										<p class="no-click-bubble" data-bind="text: '$' + price + ' (' + text + ')', style: { left: $root.slider().setPositionInSlider(price, $element, 2.5)} "></p>
 										<i data-bind="style: { left: $root.slider().setPositionInSlider(price, $element)}"></i>
 									</div>
 								<!-- /ko -->

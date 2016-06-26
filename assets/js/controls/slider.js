@@ -5,21 +5,31 @@ var slider = function(args){
 	var checkpoints = args.checkpoints || [];
 	input.val(args.startingValue || args.min);
 
-	 function setPositionInSlider(position, element, center){
+	if(args.min < 0){
+		console.error('Min value cannot be less than 0');
+		return;
+	}
+
+	if(args.max < args.min){
+		console.error('Max value cannot be less than min value');
+		return;
+	}
+
+	function setPositionInSlider(position, element, center){
 		if(position < args.min || position > args.max){
 			$(element).remove();
 			console.error('Position value is outside bounds of slider');
 			return;
 		}
 
-
 		var totalValue = args.max - args.min;
-		var center = center || 1;
+		var center = -center || 1;
 		var width = $(element).outerWidth() / center;
-		var sliderHandleWidth = sliderElement.find('.ui-slider-handle').outerWidth();
+		var sliderHandleWidth = sliderElement.find('.ui-slider-handle').outerWidth() / 2;
 
-		return ((position / (totalValue ) * 100) - ((width + sliderHandleWidth) / sliderElement.outerWidth() * 100)) + '%';
+		return (((position - args.min) / totalValue * 100) - ((sliderHandleWidth - width) / sliderElement.outerWidth() * 100)) + '%';
 	}
+	
 
 	function moveElements(handle){
 		var handlePosition = handle.position().left;

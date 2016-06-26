@@ -3,8 +3,8 @@ var siteViewModel = function(){
 
 	var lowestPrice = 0.99;
 	var averagePrice = 7.67;
-	var highPrice = 18.31;
-	var highestPrice = 49.99;
+	var highPrice =  18.31;
+	var highestPrice =  49.99;
 
 	self.timeLeft = ko.observable('');
 	self.payment = ko.observable(0);
@@ -18,7 +18,7 @@ var siteViewModel = function(){
 
 	function init(){
 		var today = new Date();
-		var endDate = getDummyDateHoursMissing();	
+		var endDate = getDummyDateDaysMissing();	
 
 		if(today < endDate){
 			if(today.addDays(1) > endDate){
