@@ -35,7 +35,7 @@ var slider = function(args){
 		if(input.length){
 			var size = input.val().length;
 			var fontSize = window.getComputedStyle(input[0], null).getPropertyValue('font-size');
-			input.css('width',(size + 1) * (parseInt(fontSize) / 2) + 2);
+			input.css('width', (size + 1) * (parseInt(fontSize) / 2));
 		}
 	}
 

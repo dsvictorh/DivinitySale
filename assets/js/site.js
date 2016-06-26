@@ -7,8 +7,8 @@ var siteViewModel = function(){
 	var highestPrice = 49.99;
 
 	self.timeLeft = ko.observable('');
-	self.payment = ko.observable(highPrice);
-	self.paymentInput = ko.observable(highPrice);
+	self.payment = ko.observable(0);
+	self.paymentInput = ko.observable(0);
 	self.customField = ko.observable(null);
 	self.slider = ko.observable(null);
 	self.checkpoints = [
@@ -37,11 +37,15 @@ var siteViewModel = function(){
 			}
 		}
 
+		self.payment = ko.observable(highPrice);
+		self.paymentInput = ko.observable(highPrice);
+
 		self.slider(slider({
 			element: $('.slider'),
 			min: lowestPrice,
 			max: highestPrice,
 			step: 0.01,
+			startingValue: highPrice,
 			onSlide: function(e, ui){
 				self.payment(ui.value.toFixed(2));
 			}
