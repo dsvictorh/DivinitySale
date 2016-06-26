@@ -27,7 +27,7 @@ var slider = function(args){
 		var arrow = sliderElement.find('.arrow');
 
 		sliderElement.find('.fill').width(handlePosition);
-		arrow.css('left', (handlePosition - arrow.outerWidth() / 2) + 3);
+		arrow.css('left', (handlePosition - arrow.outerWidth() / 2) + (arrow.outerWidth() - handle.outerWidth()));
 		checkout.css('left', handlePosition - checkout.outerWidth() / 2);
 	}
 
