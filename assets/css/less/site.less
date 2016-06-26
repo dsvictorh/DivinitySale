@@ -297,5 +297,47 @@ h3{
 
 	.right{
 		width:  39%;
+
+		.sold{
+			text-align: center;
+			margin: 30px 0 20px;
+
+			span{
+				font-family: @font-digital;
+				font-size: 4rem;
+				color: @color-white;
+				display: inline-block;
+				
+
+				
+
+				&.digit{
+					padding: 3px 6px 0;
+					border: 1px solid transparent;
+					position: relative;
+					z-index: 1;
+
+					&:before{
+						content: '8';
+						position: absolute;
+						display: inline-block;
+						color: @color-goods-sold-background-text;
+						border: 1px solid @color-goods-sold-gradient-border;
+						z-index: -1;
+						padding: 3px 6px 0;
+						border-radius: 5px;
+						top: 0;
+						left: 0;
+						.gradient(@color-goods-sold-gradient-start, @color-goods-sold-gradient-end);
+					}
+				}
+
+				&.dot{
+					color: @color-goods-sold-gradient-border;
+					vertical-align: bottom;
+					line-height: 0.5;
+				}
+			}
+		}
 	}
 }
