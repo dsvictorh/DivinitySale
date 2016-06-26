@@ -27,7 +27,7 @@ var slider = function(args){
 		var width = $(element).outerWidth() / center;
 		var sliderHandleWidth = sliderElement.find('.ui-slider-handle').outerWidth() / 2;
 
-		return (((position - args.min) / totalValue * 100) - ((sliderHandleWidth - width) / sliderElement.outerWidth() * 100)) + '%';
+		return (((position - args.min) / totalValue * 100) - (Math.abs(sliderHandleWidth - width) / sliderElement.outerWidth() * 100)) + '%';
 	}
 	
 
