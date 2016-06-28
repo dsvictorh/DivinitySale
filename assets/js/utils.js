@@ -63,7 +63,7 @@ $(document).ready(function(){
 		$(this).blur();
 	});
 
-	$('.no-click-bubble').on('click mousedown', function(e){
+	$('.no-click-bubble').on('click mousedown touchstart touchend', function(e){
 		e.stopImmediatePropagation();
 	});
 

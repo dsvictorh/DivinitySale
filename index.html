@@ -101,7 +101,8 @@
 								<i class="fill"></i>
 								<!-- ko foreach: checkpoints -->
 									<div class="checkpoint">
-										<p class="no-click-bubble" data-bind="text: '$' + price + ' (' + text + ')', style: { left: $root.slider().setPositionInSlider(price, $element, 2.5)} "></p>
+										<p class="no-click-bubble desktop" data-bind="text: '$' + price + ' (' + text + ')', style: { left: $root.slider().setPositionInSlider(price, $element, 2.5)} "></p>
+										<p class="no-click-bubble mobile" data-bind="text: '$' + price, style: { left: $root.slider().setPositionInSlider(price, $element, 2.5)} "></p>
 										<i data-bind="style: { left: $root.slider().setPositionInSlider(price, $element)}"></i>
 									</div>
 								<!-- /ko -->

@@ -10,7 +10,10 @@
 	z-index: 1;
 
 	.media-mobile({
-		left: calc(43% - 2px); 
+		left: calc(35% - 2px); 
+		top: calc(20% - 2px);
+	    width: 250px;
+    	height: 250px;
 	});
 	
 	.text{
@@ -20,6 +23,10 @@
 	    width: 100%;
 	    left: 0;
 	    top: 30%;
+
+	    .media-mobile({
+		    font-size: 7rem;
+	    });
 	}
 
 	.full{
@@ -45,6 +52,11 @@
 	    border-radius:50%;
 	    border: 7px solid;
 		border-color: @color-white transparent transparent transparent;
+
+		.media-mobile({
+			width: 235px;
+    		height: 235px;
+		});
 	}
 
 	.cover {
@@ -56,5 +68,10 @@
 	    background: @color-black;
 	    border-top-left-radius: 50px;
 	    
+	    .media-mobile({
+			.transform(scale(2.6));
+		    left: 40px;
+    		top: 35px;
+	    });
 	}
 }
