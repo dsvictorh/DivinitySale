@@ -1,0 +1,61 @@
+.percentage-circle {
+    position: relative;
+	width: 110px;
+	height: 110px;
+	top: calc(15% - 2px);
+	left: calc(30% - 2px); 
+    background: @color-black;
+    border-radius: 50%;
+    border: 2px solid @color-black;
+	z-index: 1;
+	
+	.text{
+	    position: absolute;
+	    font-size: 3rem;
+	    color: white;
+	    width: 100%;
+	    left: 0;
+	    top: 30%;
+	}
+
+	.full{
+		display: none;
+	}
+
+	&.complete{
+		.text{
+			display: none;
+		}
+
+		.full{
+			display: block;
+		}
+	}
+
+	.quarter {
+	    position:absolute;
+	    top:0;
+	    left:0;
+	    width:96px;
+	    height:95px;
+	    border-radius:50%;
+	    border: 7px solid;
+		border-color: transparent transparent transparent @color-white;
+		transform: rotate(135deg);
+		-webkit-transform: rotate(135deg);
+		-moz-transform: rotate(135deg);
+		-ms-transform: rotate(135deg);
+		-o-transform: rotate(135deg);
+	}
+
+	.cover {
+		position: absolute;
+    	top: 0px;
+	    left: 1px;
+	    width: 50px;
+	    height: 45px;
+	    background: @color-black;
+	    border-top-left-radius: 50px;
+	    
+	}
+}

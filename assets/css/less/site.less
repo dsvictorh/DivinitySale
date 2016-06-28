@@ -1,6 +1,8 @@
 @import 'utils.less';
 @import 'core.less';
 @import 'controls/slider.less';
+@import 'controls/unlock-carousel.less';
+@import 'controls/percentage-circle.less';
 
 //Structure
 html{
@@ -197,7 +199,7 @@ h3{
 				form{
 			    	border: 1px solid @color-slider-checkout-border;
 			    	border-radius: 5px;
-				    .gradient(@color-slider-checkout-background-start, @color-slider-checkout-background-end);
+				    .gradient(@color-slider-checkout-gradient-start, @color-slider-checkout-gradient-end);
 				    padding: 10px;
 				    position: relative;
 				    display: inline-block;
@@ -233,6 +235,17 @@ h3{
 			    	padding: 10px;
 			    	vertical-align: top;
 			    	cursor: pointer;
+
+					&[disabled]{
+						background: @color-subtitle-border;
+						border-color:  @color-subtitle-border; 
+						color: @color-subtitle;
+						cursor: default;
+
+						&:hover{
+							color: @color-subtitle;
+						}
+					}
 
 			    	&:hover{
 			    		color: @color-white;
@@ -302,20 +315,23 @@ h3{
 			text-align: center;
 			margin: 30px 0 20px;
 
+			p{
+			    font-size: 2.3rem;
+			}
+
 			span{
 				font-family: @font-digital;
 				font-size: 4rem;
 				color: @color-white;
 				display: inline-block;
-				
-
-				
+			    text-align: right;
 
 				&.digit{
 					padding: 3px 6px 0;
 					border: 1px solid transparent;
 					position: relative;
 					z-index: 1;
+				    width: 0.54em;
 
 					&:before{
 						content: '8';
@@ -336,8 +352,57 @@ h3{
 					color: @color-goods-sold-gradient-border;
 					vertical-align: bottom;
 					line-height: 0.5;
+					text-indent: center;
 				}
 			}
+		}
+
+		.gallery{
+			text-align: center;
+		}
+
+		.unlock-buttons{
+		    width: 88%;
+		    margin: 0 auto;
+		    border-radius: 5px;
+		    overflow: hidden;
+		    font-size: 1rem;
+		    border: 1px solid @color-gray-border;
+		    .clear;
+
+		    li{
+	    	    float: left;
+			    width: 20%;
+			    padding: 5px 0;
+			    background: @color-goods-unlock-buttons-background;
+			    position: relative;
+			    cursor: pointer;
+			    color: @color-subtitle;
+
+			    &.active, &:hover{
+					.gradient(@color-goods-unlock-buttons-gradient-start, @color-goods-unlock-buttons-gradient-end);
+			    }
+
+			    &:first-child{
+			    	border-top-left-radius: 5px;
+			    	border-bottom-left-radius: 5px;
+			    }
+
+			    &:last-child{
+			    	border-top-right-radius: 5px;
+			    	border-bottom-right-radius: 5px;
+			    }
+
+			    &:not(:first-child):after{
+			    	content: '';
+			    	position: absolute;
+			    	width: 1px;
+			    	height: 100%;
+			    	background: @color-gray-border;
+			    	left: 0;
+			    	top: 0;
+			    }
+		    }
 		}
 	}
 }

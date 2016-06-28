@@ -2,8 +2,10 @@
 <html>
 	<head>
 		<title>GOG - Divinity Bundle</title>
-		<link rel="stylesheet" href="assets/css/site.css" />
 		<link rel="stylesheet" href="assets/lib/jquery-ui/jquery-ui.css" />
+		<link rel="stylesheet" href="assets/lib/owl-carousel/owl.carousel.css" />
+		<link rel="stylesheet" href="assets/lib/owl-carousel/owl.transitions.css" />
+		<link rel="stylesheet" href="assets/css/site.css" />
 		<link rel="shortcut icon" href="assets/img/layout/favicon.ico" />
 	</head>
 	<body>
@@ -89,10 +91,10 @@
 						<div class="controls">
 							<span class="price-label semi-bold left">$<!--ko text: getLowestPrice() --><!-- /ko --></span>
 							<div class="slider">
-								<div class="box checkout no-click-bubble">
+								<div class="box checkout no-click-bubble no-ie-focus">
 									<form>
 										<label class="bold" for="input-price">$</label><input type="text" class="auto-size type-change bold" name="input-price" data-bind="value: paymentInput, event: { change: onPaymentChange}"  />
-										<button class="semi-bold no-selection" data-bind="event: { click: checkout }">Checkout now</button>
+										<button class="semi-bold no-selection" data-bind="event: { click: checkout }, disable: !timeLeft() , text: timeLeft() ? 'Checkout now' : 'Promo over'" >Checkout now</button>
 									</form>
 									<small>Click the price to type it in manually</small>
 								</div>
@@ -155,25 +157,63 @@
 							</figcaption>
 						</figure>
 					</div>
-					<div class="right">
+					<div class="right no-ie-focus">
 						<h2 class="light">Games sold so far</h2>
-						<div class="sold">
-							<span class="digit">5</span>
-							<span class="digit">5</span>
-							<span class="dot">.</span>
-							<span class="digit">5</span>
-							<span class="digit">5</span>
-							<span class="digit">5</span>
-						</div>
+						<section class="sold">
+							<!-- ko if: gamesSold() < 10000000 -->
+								<!-- ko foreach: gamesSoldDigits -->
+									<!-- ko if: $index() > 0 && ($root.gamesSoldDigits().length - $index()) % 3 == 0  -->
+										<span class="dot">.</span>
+									<!-- /ko -->
+									<span class="digit" data-bind="text: $data"></span>
+								<!-- /ko -->
+							<!-- /ko -->
+							<!-- ko if: gamesSold() >= 10000000 -->
+								<p>Over 10 million copies sold!</p>
+							<!-- /ko -->
+						</section>
+						<section class="gallery">
+							<h3 class="semi-bold">Reach <!-- ko text: unlockableItem().unlockPoint --><!-- /ko -->...</h3>
+							<p data-bind="text: unlockableItem().text"></p>
+							<div class="unlock-carousel">
+								<div class="carousel-slider" data-bind="foreach: unlocks">
+									<div class="status">
+										<div class="percentage-circle">
+											<div class="quarter"></div>
+										    <div class="quarter"></div>
+										    <div class="quarter"></div>
+										    <div class="quarter"></div>
+										    <div class="cover"></div>
+										    <i class="text" data-bind="text: $root.calculatePercentage($element, unlockPoint)"></i>
+										    <img class="full" src="assets/img/icons/play.png" alt="Play video" />
+										</div>
+										<img class="image" data-bind="attr: { src: slideImage }" />
+									</div>
+								</div>
+							</div>
+							<ul class="unlock-buttons" data-bind="foreach: unlocks">
+								<li class="custom-page" data-bind="css: { active: $root.unlockableItem().unlockPoint == unlockPoint }">
+									<!-- ko if: $root.gamesSold() < unlockPoint -->
+										<!-- ko text: unlockPoint --><!-- /ko -->
+									<!-- /ko -->
+									<!-- ko if: $root.gamesSold() >= unlockPoint -->
+										<img src="assets/img/icons/check.png" alt="active" />
+									<!-- /ko -->
+								</li>
+							</ul>
+						</section>
 					</div>
 				</section>
 			</div>
 		</main>
 		<script src="assets/lib/jquery.js"></script>
 		<script src="assets/lib/jquery-ui/jquery-ui.js"></script>
+		<script src="assets/lib/owl-carousel/owl.carousel.js"></script>
 		<script src="assets/lib/ko.js"></script>
 		<script src="assets/js/utils.js"></script>
 		<script src="assets/js/controls/slider.js"></script>
+		<script src="assets/js/controls/unlock-carousel.js"></script>
+		<script src="assets/js/controls/percentage-circle.js"></script>
 		<script src="assets/js/site.js"></script>
 		<script>
 			ko.applyBindings(new siteViewModel());

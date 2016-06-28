@@ -46,6 +46,11 @@ function padZero(num, size) {
     return s;
 }
 
+function instantInterval(fn, timeout){
+    fn();
+    return setInterval(fn, timeout);
+}
+
 
 
 $(document).ready(function(){

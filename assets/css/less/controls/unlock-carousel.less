@@ -1,0 +1,57 @@
+.unlock-carousel{
+	margin: 15px 0;
+
+	.carousel-slider{
+		position: relative;
+
+		.image{
+		    border: solid 7px @color-white;
+		}
+
+		.percentage-circle{
+			position: absolute;
+
+			.full{
+			    position: absolute;
+			    top: 34%;
+			    left: 40%;
+			}
+		}
+
+		.status{
+	        width: 88%;
+		    margin: 0 auto;
+		    position: relative;
+		    cursor: pointer;
+
+		    &:before{
+	    	    content: '';
+			    background: rgba(0, 0, 0, 0.5);
+			    position: absolute;
+			    z-index: 1;
+			    width: 95%;
+			    height: 89%;
+			    top: 7px;
+			    left: 7px;
+		    }
+		}
+
+		.owl-buttons div{
+			width: 25px;
+			height: 25px;
+			position: absolute;
+			top: 40%;
+			background: url('../img/icons/carousel-nav.png') center no-repeat;
+
+
+			&.owl-prev{
+				left: -5%;
+			}
+
+			&.owl-next{
+				right: -5%;
+				.transform(scale(-1, 1));
+			}
+		}
+	}
+}
