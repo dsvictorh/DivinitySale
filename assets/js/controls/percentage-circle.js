@@ -31,7 +31,7 @@ var percentageCircle = function(el, value, total){
 		}
 
 		//We get the percentage in a decimal way
-		var decimalPercentage = (value / total).toFixed(2);
+		var decimalPercentage = value / total;
 
 		//Turn the percentage into degrees
 		var degrees = decimalPercentage * 360;        
