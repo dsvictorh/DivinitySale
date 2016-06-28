@@ -74,6 +74,17 @@
 }
 
 //Media Queries
+.media-mobile(@styles){
+	@media screen and (max-width: 768px){
+		@styles();
+	}
+}
+
+.media-mobile-small(@styles){
+	@media screen and (max-width: 600px){
+		@styles();
+	}
+}
 
 
 

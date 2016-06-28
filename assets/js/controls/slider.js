@@ -89,6 +89,10 @@ var slider = function(args){
 			resizeTextInput();
 		}
 	});
+
+	$(window).resize(function(){
+		sliderElement.slider('value', sliderElement.slider('value'));
+	});
 	
 
 	//If there is a box element following the handler
