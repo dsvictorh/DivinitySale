@@ -11,7 +11,7 @@
 	<body>
 		<header class="main-menu">
 			<div class="container">
-				
+				<img src="assets/img/layout/fake-menu.png" />
 			</div>
 		</header>
 		<main>
@@ -177,7 +177,7 @@
 							<p data-bind="text: unlockableItem().text"></p>
 							<div class="unlock-carousel">
 								<div class="carousel-slider" data-bind="foreach: unlocks">
-									<div class="status">
+									<div class="status" data-bind="event: { click: $root.watchVideo(unlockPoint) }">
 										<div class="percentage-circle">
 											<div class="quarter"></div>
 										    <div class="quarter"></div>
@@ -206,6 +206,12 @@
 				</section>
 			</div>
 		</main>
+		<div class="light-box">
+			<i class="close">X</i>
+			<div class="content">
+				<iframe src="" allowfullscreen tabindex="1" frameborder="0"></iframe>
+			</div>
+		</div>
 		<script src="assets/lib/jquery.js"></script>
 		<script src="assets/lib/jquery-ui/jquery-ui.js"></script>
 		<script src="assets/lib/owl-carousel/owl.carousel.js"></script>
@@ -214,6 +220,7 @@
 		<script src="assets/js/controls/slider.js"></script>
 		<script src="assets/js/controls/unlock-carousel.js"></script>
 		<script src="assets/js/controls/percentage-circle.js"></script>
+		<script src="assets/js/controls/light-box.js"></script>
 		<script src="assets/js/site.js"></script>
 		<script>
 			ko.applyBindings(new siteViewModel());

@@ -17,6 +17,7 @@
 				}
 			],
 			"sources": [
+				"controls/light-box.less",
 				"controls/percentage-circle.less",
 				"controls/slider.less",
 				"controls/unlock-carousel.less",

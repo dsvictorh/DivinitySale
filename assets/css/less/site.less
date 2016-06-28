@@ -3,6 +3,7 @@
 @import 'controls/slider.less';
 @import 'controls/unlock-carousel.less';
 @import 'controls/percentage-circle.less';
+@import 'controls/light-box.less';
 
 //Structure
 html{
@@ -16,6 +17,8 @@ main{
 .main-menu{
 	border-bottom: solid 1px @color-menu-border-bottom;
 	height: 46px;
+    box-sizing: border-box;
+    padding: 10px;
 	.gradient(@color-menu-background-start, @color-menu-background-end);
 	.shadow-box;
 }

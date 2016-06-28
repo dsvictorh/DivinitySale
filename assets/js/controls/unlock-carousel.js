@@ -1,8 +1,6 @@
 var unlockCarousel = function(args){
 	var carousel = $(args.element);
-
-	
-
+    
 	carousel.owlCarousel({
         navigation: true,
         slideSpeed: 300,

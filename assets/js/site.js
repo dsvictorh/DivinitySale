@@ -14,6 +14,7 @@ var siteViewModel = function(){
 	self.slider = ko.observable(null);
 	self.unlockCarousel = ko.observable(null);
 	self.unlockableItem = ko.observable(null);
+	self.lightBox = ko.observable(null);
 	self.checkpoints = [
 		{ text: 'Average', price: averagePrice },
 		{ text: 'Top 10%', price: highPrice },
@@ -75,6 +76,8 @@ var siteViewModel = function(){
 		    }));
 		});
 
+		self.lightBox(lightBox());
+
 		var checkSales = setInterval(function(){
 			//Simulate a DB check for bundles bought
 			self.gamesSold(getDummyPeopleBuying(self.gamesSold()));
@@ -100,6 +103,19 @@ var siteViewModel = function(){
 			self.paymentInput(self.payment());
 		}
 	});
+
+	self.watchVideo = function(unlockPoint){
+		//Simulate trying to get a video URL from the DB
+		//This of course represents no safe way because we are using a youtube iframe
+		//for the purpose of the test. This can easily be replaced by a video tag
+		//and by safekeeping the actual URLs they wouldn't be available until properly
+		//unlocked.
+		var videoUrl = getDummyVideoUrl(unlockPoint, self.gamesSold());
+
+		if(videoUrl){
+			self.lightBox().show(videoUrl);
+		}
+	}
 
 	self.calculatePercentage = function(el, total){
 		if(self.gamesSold() > total){
@@ -233,7 +249,37 @@ function getDummyGamesSoldTenMillion(){
 	return 10000000;
 }
 
+/* Check if video unlocked */
+function getDummyVideoUrl(unlockPoint, gamesSold){
+	if(gamesSold >= unlockPoint){
+		var url = 'https://www.youtube.com/embed/'
+		switch(unlockPoint){
+			case 10000:
+				url += 'XvQ91M7VbPM';
+				break;
+			case 25000:
+				url += 'YWKkkNkE8fo';
+				break;
+			case 50000:
+				url += 'qjtFZt5tI4E';
+				break;
+			case 80000:
+				url += 'Nzsg_WkSI6s';
+				break;
+			case 120000:
+				url += 'QH2-TGUlwu4';
+				break;
+		}
+
+		url += '?autoplay=1&showinfo=0&allowfullscreen=1';
+		return url;
+	}
+	
+	return null;
+}
+
 /* People buying bundles dummy function*/
 function getDummyPeopleBuying(value){
 	return value + Math.floor((Math.random() * 10000) + 1);
 }
+
