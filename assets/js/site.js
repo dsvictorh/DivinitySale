@@ -51,7 +51,7 @@ var siteViewModel = function(){
 
 		self.payment(highPrice);
 		self.paymentInput(highPrice);
-		self.gamesSold(getDummyGamesSoldTenThousand());  //USE GAMES SOLD DUMMIES HERE FOR TESTING
+		self.gamesSold(getDummyGamesSoldFiveThousand());  //USE GAMES SOLD DUMMIES HERE FOR TESTING
 
 		self.slider(slider({
 			element: '.slider',
@@ -74,6 +74,15 @@ var siteViewModel = function(){
 		        }
 		    }));
 		});
+
+		var checkSales = setInterval(function(){
+			//Simulate a DB check for bundles bought
+			self.gamesSold(getDummyPeopleBuying(self.gamesSold()));
+
+			if(!self.timeLeft()){
+				clearInterval(checkSales);
+			}
+		}, 10000);
 	};
 
 	self.gamesSoldDigits = ko.computed(function(){
@@ -120,8 +129,10 @@ var siteViewModel = function(){
 		}
 
 		if(self.timeLeft()){
-			//Assuming the user checked out and payn this example just increases the sold value by 1
+			//Assuming the user checked out and payed this example just increases the sold value by 1
 			self.gamesSold(self.gamesSold() + 1);
+			alert('Thank you for your purchase');
+			self.payment(highPrice);
 		}
 
 		return false;
@@ -166,8 +177,8 @@ var siteViewModel = function(){
 	init();
 }
 
-/*Dummy functions to simulate getting a value from a DB. Change between similar functions
- to see the different functionalities working*/
+/* Dummy functions to simulate getting a value from a DB. Change between similar functions
+ to see the different functionalities working */
 
 /* TIME MISSING */ 
 function getDummyDateHoursMissing()
@@ -216,4 +227,13 @@ function getDummyGamesSoldHundredThousand(){
 
 function getDummyGamesSoldMillion(){
 	return 1000000;
+}
+
+function getDummyGamesSoldTenMillion(){
+	return 10000000;
+}
+
+/* People buying bundles dummy function*/
+function getDummyPeopleBuying(value){
+	return value + Math.floor((Math.random() * 10000) + 1);
 }

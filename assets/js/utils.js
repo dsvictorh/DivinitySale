@@ -40,12 +40,15 @@ function getMissingTime(startDate, endDate, getDays){
 }
 
 
+//Add 0s to the left until the correct size is met
 function padZero(num, size) {
     var s = num+"";
     while (s.length < size) s = "0" + s;
     return s;
 }
 
+
+//Makes sure the first instance of the repeating function executes immediately
 function instantInterval(fn, timeout){
     fn();
     return setInterval(fn, timeout);
@@ -54,6 +57,8 @@ function instantInterval(fn, timeout){
 
 
 $(document).ready(function(){
+    //Blurs elements that are clicked as the focus state creates
+    //a black border on the tabable controls for accesibility
 	$('body').on('.no-selection', 'click', function(){
 		$(this).blur();
 	});
@@ -62,6 +67,9 @@ $(document).ready(function(){
 		e.stopImmediatePropagation();
 	});
 
+    //The browser doesn't trigger a value change on an input as soon as its value changes
+    //but rather after you lose focus on it. This makes sure the change event is triggered
+    //as you type to get more immediate results
 	$('.type-change').on('keyup', function(){
 		var input = $(this);
 		input.trigger('change');

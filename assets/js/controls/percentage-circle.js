@@ -1,27 +1,13 @@
-// create a circle using HTML5 / CSS3 / JS which has a border that only goes part-way around
-// the circle .. and which can be smoothly animated from 0% to 100% around the circle
-
-// this solution allows for animation and still results in relatively clean code
-// we use four quarter-circles, all hidden away behind a white square to start with..
-// all four are rotated out clockwise, and each quarter will stop at it's own maximum:
-// q1 at 25%, q2 at 50% .. etc. once we reach a value at or over 25%, all four quarters
-// should be out from behind the white square, and we can hide it.. it needs to be
-// hidden if we display a value over 75%, or else q4 will end up going in behind it again
-// .. also, since the top border will usually sit between the angles of  -45 to 45, we
-// rotate everything by an extra -45 to make it all line up with the top nicely
-
 var percentageCircle = function(el, value, total){
-	var fromHidden = 135;
-
-	// utility funciton to align 0 degrees with top
-	// takes degrees and returns degrees - 45
+	//The quarters of the circle will start covering from the top. Meaning that every 90 degrees
+	//means one of the sides. Since this square fills the quarters diagonally so it makes more sense visually
+	//the degrees are reduced by 45 degrees making sure that each start point of a quarter is the exact half on each side of the square
 	function topAlign(degrees) {
-	    return degrees - 90;
+	    return degrees - 45;
 	};
 
-	// utility function to rotate a jQuery element
-	// takes element and the degree of rotation (from the top) 
 	function rotate(el, degrees) {
+		//Align the quarters
 		var degrees = topAlign(degrees || 0);
 		el.css(
 			'transform', 'rotate('+degrees+'deg)',
@@ -32,9 +18,7 @@ var percentageCircle = function(el, value, total){
 		)
 	}
 
-	// function to draw semi-circle
-	// takes a jQuery element and a value (between 0 and 1)
-	// element must contain four .arc_q elements
+
 	function circle(el, value, total) {
 		if(value > total){
 			console.error('Value cannot exceed total');
@@ -46,23 +30,32 @@ var percentageCircle = function(el, value, total){
 			return; 
 		}
 
+		//We get the percentage in a decimal way
 		var decimalPercentage = (value / total).toFixed(2);
 
-		var degrees = decimalPercentage * 360;             // turn normalised value into degrees
-		var counter = 1;                                 // keeps track of which quarter we're working with
-		el.find('.quarter').each(function(){               // loop over quarters..
-			var angle = Math.min(counter * 90, degrees); // limit angle to maximum allowed for this quarter
-			rotate($(this), fromHidden + angle);         // rotate from the hiding place
-			counter++; // track which quarter we'll be working with in next pass over loop
+		//Turn the percentage into degrees
+		var degrees = decimalPercentage * 360;        
+		var counter = 1;                                 
+		el.find('.quarter').each(function(){     
+			//All quarters try to rotate for the full value. By separating
+			//each quarter's maximum (90, 180, 270, 360) degrees we make sure once 
+			//that quarter reaches its full only the other quarters keep travelling          
+			var angle = Math.min(counter * 90, degrees);
+			rotate($(this), angle);
+			counter++;
 		});
 
-		if (degrees > 90)                             // hide the cover-up square soon as we can
+		//The cover only needs to hide values less than 90 degrees as the non fully rotated 
+		//borders will invade the 4th quarter of the circle. Once the value exceeds 90 degrees each line will hide
+		//behind each other quarter so we can remove it
+		if (degrees > 90)
 			el.find('.cover').css('display', 'none');
 
 		if(decimalPercentage >= 1 && el.find('.full').length){
 			el.addClass('complete');
 		}
 
+		//Get the decimal value into percentage to show the value
 		return Math.floor(decimalPercentage * 100);
 	}
 
